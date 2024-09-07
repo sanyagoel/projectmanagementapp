@@ -3,6 +3,7 @@ import ProjectSideBar from './components/projectSidebar';
 import NewProject from './components/newProject';
 import NoProject from './components/noProject';
 import ViewProject from './components/viewProject';
+import {TasksContext} from './store/tasksContext';
 
 import {useState} from 'react';
 import Tasks from './components/Tasks';
@@ -141,7 +142,8 @@ console.log(clicked.projects);
   else if(clicked.selectedProjectId===undefined){
     content= <NoProject onSelect={onSelect}/>
   }else{
-    content = <ViewProject projects = {clicked.projects} projectID={clicked.selectedProjectId} onDelete={onDelete} createTask={addTask} deleteTask={deleteTask}/>
+   let contextValue = {createTask : addTask , deleteTask : deleteTask};
+    content = (<TasksContext.Provider value={contextValue}><ViewProject projects = {clicked.projects} projectID={clicked.selectedProjectId} onDelete={onDelete}/></TasksContext.Provider>);
   }
 
   return (

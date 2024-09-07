@@ -1,7 +1,9 @@
 import {useRef} from 'react';
-import {useState} from 'react';
-export default function Tasks({createTask,projects,projectID,deleteTask}){
-    
+import { TasksContext } from '../store/tasksContext';
+import {useContext} from 'react';
+ 
+export default function Tasks({projects,projectID}){
+    const {createTask,deleteTask} = useContext(TasksContext);
     const task = useRef();
     function clearOut(){
         if(task.current.value.trim()===''){

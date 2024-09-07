@@ -1,7 +1,7 @@
 import Tasks from "./Tasks";
 
 
-export default function ViewProject({projects,projectID,onDelete,createTask,deleteTask}){
+export default function ViewProject({projects,projectID,onDelete}){
     console.log('Projects:', projects);
     console.log('productID'+ projectID);
     
@@ -23,7 +23,7 @@ export default function ViewProject({projects,projectID,onDelete,createTask,dele
             <p className="mb-4 text-black whitespace-pre-wrap">{requiredProject.description}</p>
             <hr className="border-stone-300 w-full mb-4 border-2"></hr>
             <p className="text-black font-bold text-2xl">Tasks</p>
-            <Tasks createTask={createTask} projects={projects} projectID={projectID} deleteTask={deleteTask}></Tasks>
+            <Tasks projects={projects} projectID={projectID}></Tasks>
             </div>
            
         </>
